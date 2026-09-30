@@ -1,618 +1,283 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Profil pribadi dan portofolio saya.">
-  <title>Profil Saya | Portfolio</title>
+  <title>Rumah Qur'an Baitul Itqan - Membina Generasi Qur'ani Berakhlak Mulia</title>
+  <meta name="description" content="Website resmi Rumah Qur'an Baitul Itqan. Lembaga pendidikan Al-Qur'an, tahsin metode Ummi, dan tahfidz untuk anak serta dewasa.">
+  
+  <!-- Favicon Lembaga -->
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png">
+  
+  <!-- Tailwind CSS & Font Plus Jakarta Sans -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #0f172a;
-      --text: #334155;
-      --muted: #64748b;
-      --light: #f8fafc;
-      --white: #ffffff;
-      --border: #e2e8f0;
-      --shadow: 0 15px 40px rgba(15, 23, 42, 0.10);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--light);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1100px, 92%);
-      margin: auto;
-    }
-
-    /* NAVBAR */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--secondary);
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-weight: 600;
-      color: var(--text);
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: calc(100vh - 70px);
-      display: flex;
-      align-items: center;
-      padding: 70px 0;
-      background:
-        radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.14), transparent 30%),
-        radial-gradient(circle at 10% 90%, rgba(14, 165, 233, 0.10), transparent 30%);
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: #dbeafe;
-      color: var(--primary-dark);
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
-      line-height: 1.08;
-      color: var(--secondary);
-      margin-bottom: 18px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      max-width: 650px;
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-      transition: 0.3s;
-      border: 2px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border-color: var(--border);
-      background: white;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .profile-card {
-      background: white;
-      border-radius: 28px;
-      padding: 35px;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .profile-photo {
-      width: 190px;
-      height: 190px;
-      margin: 0 auto 22px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      border: 7px solid #dbeafe;
-      background: #e2e8f0;
-    }
-
-    .profile-card h2 {
-      color: var(--secondary);
-      margin-bottom: 5px;
-    }
-
-    .profile-card p {
-      color: var(--muted);
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 90px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-size: 2.3rem;
-      color: var(--secondary);
-      margin-bottom: 8px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
-    }
-
-    .card h3 {
-      color: var(--secondary);
-      margin-bottom: 12px;
-    }
-
-    /* SKILLS */
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill {
-      padding: 25px;
-      text-align: center;
-      background: white;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      transition: 0.3s;
-    }
-
-    .skill:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .skill .icon {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-
-    .skill h3 {
-      color: var(--secondary);
-      margin-bottom: 5px;
-    }
-
-    .skill p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* PROJECTS */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .project {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      border: 1px solid var(--border);
-    }
-
-    .project h3 {
-      color: var(--secondary);
-      margin-bottom: 8px;
-    }
-
-    .project p {
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 5px 10px;
-      margin: 3px;
-      border-radius: 999px;
-      background: #eff6ff;
-      color: var(--primary-dark);
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    /* CONTACT */
-    .contact-box {
-      max-width: 750px;
-      margin: auto;
-      text-align: center;
-      background: var(--secondary);
-      color: white;
-      padding: 45px 30px;
-      border-radius: 24px;
-    }
-
-    .contact-box h2 {
-      margin-bottom: 10px;
-    }
-
-    .contact-box p {
-      color: #cbd5e1;
-      margin-bottom: 25px;
-    }
-
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .contact-info a {
-      background: rgba(255,255,255,0.1);
-      padding: 10px 15px;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .contact-info a:hover {
-      background: rgba(255,255,255,0.2);
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #020617;
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    /* MOBILE */
-    @media (max-width: 800px) {
-      .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
-        font-size: 0.9rem;
-      }
-
-      .hero-content,
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        text-align: center;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .buttons {
-        justify-content: center;
-      }
-
-      .skills,
-      .projects {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-card {
-        max-width: 400px;
-        margin: auto;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            }
+          }
+        }
       }
     }
-
-    @media (max-width: 520px) {
-      nav {
-        flex-direction: column;
-        justify-content: center;
-        padding: 15px 0;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero {
-        padding-top: 45px;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-    }
-  </style>
+  </script>
 </head>
-
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
 
   <!-- NAVBAR -->
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#home" class="logo">Profil<span>Saya</span></a>
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img src="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png" alt="Logo RQ Baitul Itqan" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full p-0.5 border border-brand-500 shadow-sm group-hover:scale-105 transition-transform">
+        <div>
+          <span class="block text-sm sm:text-base font-extrabold text-brand-900 tracking-tight leading-tight">Rumah Qur'an</span>
+          <span class="block text-xs sm:text-sm font-semibold text-brand-600 tracking-wide">Baitul Itqan</span>
+        </div>
+      </a>
 
-        <ul class="nav-links">
-          <li><a href="#home">Beranda</a></li>
-          <li><a href="#tentang">Tentang</a></li>
-          <li><a href="#keahlian">Keahlian</a></li>
-          <li><a href="#proyek">Proyek</a></li>
-          <li><a href="#kontak">Kontak</a></li>
-        </ul>
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-slate-600">
+        <a href="#tentang" class="hover:text-brand-600 transition-colors">Tentang Kami</a>
+        <a href="#program" class="hover:text-brand-600 transition-colors">Program</a>
+        <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Keunggulan</a>
+        <a href="#kontak" class="hover:text-brand-600 transition-colors">Kontak</a>
       </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5">
+        <!-- Portal Admin Link (Subdomain Khusus) -->
+        <a href="https://adm.baitulitqan.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-800 bg-brand-50 hover:bg-brand-100 border border-brand-200 px-3 py-2 rounded-lg transition-all flex items-center gap-1 shadow-sm">
+          <span>🔒</span>
+          <span class="hidden sm:inline">Portal</span> Admin
+        </a>
+        <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20tanya%20informasi%20pendaftaran%20santri%20baru" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 active:scale-95 px-3.5 py-2 rounded-lg transition-all shadow-sm">
+          Daftar Santri
+        </a>
+      </div>
+
     </div>
   </header>
 
-  <!-- HERO -->
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-content">
-
-        <div>
-          <span class="badge">👋 Selamat Datang</span>
-
-          <h1>
-            Halo, saya <span>Nama Anda</span>
+  <!-- HERO SECTION -->
+  <section class="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-28 bg-gradient-to-b from-brand-50/60 via-slate-50 to-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-brand-100/70 border border-brand-200 text-brand-800 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
+            <span>✨</span> Penerimaan Santri Baru Telah Dibuka
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Mencetak Generasi Qur'ani yang <span class="text-brand-600 underline decoration-brand-200 decoration-wavy underline-offset-4">Tartil & Berakhlak Mulia</span>
           </h1>
-
-          <p>
-            Saya adalah seorang pendidik dan pengembang yang tertarik pada
-            teknologi, pengembangan aplikasi, serta pembuatan media
-            pembelajaran digital yang menarik dan bermanfaat.
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Rumah Qur'an Baitul Itqan berkomitmen membina santri membaca Al-Qur'an secara fasih dan benar melalui metode tartil terstandar, didampingi ustadzah bersyahadah serta sistem pelaporan digital berkala ke orang tua.
           </p>
+          
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+            <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20konsultasi%20pendaftaran" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center px-6 py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-600/20 transition-all">
+              Hubungi Admin via WhatsApp
+            </a>
+            <a href="#program" class="w-full sm:w-auto text-center px-6 py-3.5 bg-white hover:bg-slate-100 text-slate-700 font-bold text-sm rounded-xl border border-slate-200 shadow-sm transition-all">
+              Lihat Program Belajar
+            </a>
+          </div>
 
-          <div class="buttons">
-            <a href="#tentang" class="btn btn-primary">Kenali Saya</a>
-            <a href="#kontak" class="btn btn-outline">Hubungi Saya</a>
+          <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 font-medium">
+            <span class="flex items-center gap-1.5">✓ Metode Standar Ummi</span>
+            <span class="flex items-center gap-1.5">✓ Pengajar Bersyahadah</span>
+            <span class="flex items-center gap-1.5">✓ Rapor Digital</span>
           </div>
         </div>
 
-        <div class="profile-card">
-          <!-- Ganti foto-profil.jpg dengan nama file foto Anda -->
-          <img src="https://i.pinimg.com/236x/1c/33/14/1c331492f654d0e0aa7add8613042e0f.jpg" alt="Foto Profil" class="profile-photo">
-
-          <h2>Nama Anda</h2>
-          <p>Pendidik & Web Developer</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TENTANG -->
-    <section id="tentang">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Tentang Saya</h2>
-          <p>Sedikit informasi tentang saya</p>
-        </div>
-
-        <div class="about">
-          <div class="card">
-            <h3>👨‍💻 Profil</h3>
-            <p>
-              Tuliskan deskripsi singkat tentang diri Anda di sini.
-              Misalnya pengalaman, pekerjaan, minat, pendidikan, atau
-              hal-hal yang ingin Anda tampilkan kepada pengunjung.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>🎯 Fokus Saya</h3>
-            <p>
-              Saya berfokus pada pemanfaatan teknologi untuk membantu
-              pekerjaan, pendidikan, pengembangan sistem, dan menciptakan
-              pengalaman digital yang sederhana namun bermanfaat.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- KEAHLIAN -->
-    <section id="keahlian">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Keahlian</h2>
-          <p>Beberapa bidang yang saya kuasai</p>
-        </div>
-
-        <div class="skills">
-
-          <div class="skill">
-            <div class="icon">💻</div>
-            <h3>Web Development</h3>
-            <p>HTML, CSS, JavaScript dan pengembangan website.</p>
-          </div>
-
-          <div class="skill">
-            <div class="icon">🎓</div>
-            <h3>Teknologi Pendidikan</h3>
-            <p>Pembuatan media pembelajaran dan aplikasi pendidikan.</p>
-          </div>
-
-          <div class="skill">
-            <div class="icon">⚙️</div>
-            <h3>Pengembangan Aplikasi</h3>
-            <p>Pengembangan aplikasi dan sistem untuk kebutuhan sekolah.</p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROYEK -->
-    <section id="proyek">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Proyek Saya</h2>
-          <p>Beberapa proyek yang pernah atau sedang saya kerjakan</p>
-        </div>
-
-        <div class="projects">
-
-          <div class="project">
-            <h3>📚 Aplikasi Sekolah</h3>
-            <p>
-              Sistem digital untuk membantu administrasi dan aktivitas
-              sekolah.
-            </p>
-            <span class="tag">Web App</span>
-            <span class="tag">Education</span>
-          </div>
-
-          <div class="project">
-            <h3>📝 Media Pembelajaran</h3>
-            <p>
-              Media pembelajaran interaktif berbasis HTML, CSS, dan JavaScript.
-            </p>
-            <span class="tag">HTML</span>
-            <span class="tag">JavaScript</span>
-          </div>
-
-          <div class="project">
-            <h3>🚀 Proyek Lainnya</h3>
-            <p>
-              Tambahkan proyek, aplikasi, website, atau karya lain Anda di sini.
-            </p>
-            <span class="tag">Portfolio</span>
-            <span class="tag">Project</span>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- KONTAK -->
-    <section id="kontak">
-      <div class="container">
-
-        <div class="contact-box">
-          <h2>Mari Terhubung 👋</h2>
-
-          <p>
-            Jika ingin berdiskusi atau bekerja sama, silakan hubungi saya
-            melalui salah satu kontak berikut.
-          </p>
-
-          <div class="contact-info">
-            <a href="mailto:emailanda@example.com">📧 Email</a>
-            <a href="https://wa.me/628xxxxxxxxxx" target="_blank">💬 WhatsApp</a>
-            <a href="https://www.instagram.com/" target="_blank">📷 Instagram</a>
-            <a href="https://github.com/" target="_blank">💻 GitHub</a>
+        <!-- Hero Card Visual -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-full max-w-sm bg-white rounded-3xl p-6 shadow-xl border border-slate-100 relative">
+            <div class="absolute -top-3 -right-3 bg-brand-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
+              Keluarga Qur'an
+            </div>
+            <div class="text-center space-y-4">
+              <img src="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png" alt="Emblem" class="w-20 h-20 mx-auto rounded-full p-1 bg-brand-50 border-2 border-brand-500 shadow-md">
+              <div>
+                <h3 class="font-extrabold text-slate-800 text-lg">RQ Baitul Itqan</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Membimbing dengan Hati, Mentartilkan Setiap Huruf</p>
+              </div>
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 text-xs text-left">
+                <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                  <span class="text-slate-500">Target Belajar:</span>
+                  <span class="font-bold text-brand-700">Fasih Membaca & Hafal Juz 30</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-slate-200">
+                  <span class="text-slate-500">Evaluasi:</span>
+                  <span class="font-bold text-slate-700">Ujian Berkala & Rapor Online</span>
+                </div>
+                <div class="flex justify-between items-center py-1">
+                  <span class="text-slate-500">Suasana:</span>
+                  <span class="font-bold text-slate-700">Nyaman & Interaktif</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- TENTANG KAMI SECTION -->
+  <section id="tentang" class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-4">
+      <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Mengenal Lembaga</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Visi & Dedikasi Kami</h2>
+      <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+        Rumah Qur'an Baitul Itqan didirikan dengan cita-cita mulia menghadirkan pusat pembelajaran Al-Qur'an yang ramah anak, terstruktur, dan akuntabel. Kami tidak hanya mengajarkan santri untuk mengeja dan menghafal ayat suci, namun juga menanamkan adab, nilai hadits, serta kecintaan terhadap kalamullah dalam kehidupan sehari-hari.
+      </p>
+    </div>
+  </section>
 
-  <footer>
-    &copy; <span id="year"></span> Nama Anda. Semua Hak Dilindungi.
+  <!-- PROGRAM SECTION -->
+  <section id="program" class="py-16 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kurikulum & Jenjang</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Program Pembelajaran</h2>
+        <p class="text-xs sm:text-sm text-slate-500">Pilihan program terpadu sesuai jenjang kemampuan santri</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Program 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-2xl">📖</span>
+            <h3 class="text-base font-bold text-slate-800">Kelas Tahsin Ummi (Jilid 1 - 6)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Bimbingan membaca Al-Qur'an secara bertahap mulai dari pengenalan huruf hijaiyah, makharijul huruf, tajwid dasar, hingga bacaan tartil berstandar jilid Ummi.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-700">
+            Usia Santri: 4 - 12 Tahun
+          </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-brand-200 bg-brand-50/20 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl-lg">Unggulan</div>
+          <div class="space-y-3">
+            <span class="text-2xl">🕌</span>
+            <h3 class="text-base font-bold text-slate-800">Tahfidz Anak & Hadits Pilihan</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Program akselerasi hafalan Juz 30 (Juz 'Amma) dipadukan dengan mutaba'ah setoran harian, hafalan hadits pilihan, serta doa-doa harian penunjang ibadah.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-700">
+            Dilengkapi Rapor Ujian Digital
+          </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-2xl">🧕</span>
+            <h3 class="text-base font-bold text-slate-800">Tahsin Dewasa / Ummahat</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Kelas bimbingan perbaikan bacaan Al-Qur'an khusus kaum ibu dan muslimah dewasa dengan jadwal yang fleksibel dan suasana halaqah yang nyaman.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-700">
+            Kelas Intensif Mingguan
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KEUNGGULAN SECTION -->
+  <section id="keunggulan" class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+      
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kenapa Memilih Kami</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Keunggulan RQ Baitul Itqan</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">🎓</div>
+          <h4 class="text-sm font-bold text-slate-800">Guru Bersyahadah</h4>
+          <p class="text-xs text-slate-500">Seluruh pengajar telah mengantongi syahadah pelatihan metode Qur'ani.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">📲</div>
+          <h4 class="text-sm font-bold text-slate-800">Monitoring Digital</h4>
+          <p class="text-xs text-slate-500">Mutaba'ah hafalan dan hasil ujian dapat diakses online oleh orang tua.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">🤝</div>
+          <h4 class="text-sm font-bold text-slate-800">Rasio Kelas Ideal</h4>
+          <p class="text-xs text-slate-500">Jumlah santri per halaqah dibatasi agar bimbingan berjalan intensif dan fokus.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">🌱</div>
+          <h4 class="text-sm font-bold text-slate-800">Pendidikan Adab</h4>
+          <p class="text-xs text-slate-500">Mengedepankan akhlakul karimah terhadap Al-Qur'an, guru, dan orang tua.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA / KONTAK SECTION -->
+  <section id="kontak" class="py-16 bg-brand-900 text-white relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Daftarkan Putra-Putri Anda Sekarang</h2>
+      <p class="text-xs sm:text-sm text-brand-200 max-w-xl mx-auto leading-relaxed">
+        Beri bekal terindah bagi masa depan ananda dengan bimbingan Al-Qur'an yang menyenangkan dan berkualitas di Rumah Qur'an Baitul Itqan.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20mendaftarkan%20anak%20saya" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 bg-brand-500 hover:bg-brand-400 active:scale-95 text-white font-bold text-sm rounded-xl shadow-lg transition-all">
+          Hubungi via WhatsApp (Customer Service)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-10 text-xs border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <img src="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png" alt="Logo" class="w-6 h-6 rounded-full">
+        <span class="text-slate-200 font-bold">Rumah Qur'an Baitul Itqan</span>
+      </div>
+      <div>
+        &copy; 2026 Rumah Qur'an Baitul Itqan. All rights reserved.
+      </div>
+      <div>
+        <a href="https://adm.baitulitqan.com" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors">Portal Pengurus &rsaquo;</a>
+      </div>
+    </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 
 </body>
 </html>
