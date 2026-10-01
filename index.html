@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rumah Qur'an Baitul Itqan - Membina Generasi Qur'ani Berakhlak Mulia</title>
-  <meta name="description" content="Website resmi Rumah Qur'an Baitul Itqan. Lembaga pendidikan Al-Qur'an, tahsin metode Ummi, dan tahfidz untuk anak serta dewasa.">
+  <title>Rumah Qur'an Baitul Itqan - Cirahayu, Luragung, Kuningan</title>
+  <meta name="description" content="Website resmi Rumah Qur'an Baitul Itqan. Pusat pembelajaran Al-Qur'an tartil metode Ummi dan tahfidz di Desa Cirahayu, Luragung, Kabupaten Kuningan.">
   
   <!-- Favicon Lembaga -->
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png">
   
-  <!-- Tailwind CSS & Font Plus Jakarta Sans -->
+  <!-- Tailwind CSS & Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Supabase JS Client untuk Data Dinamis Real-Time -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
     tailwind.config = {
@@ -26,6 +29,7 @@
             brand: {
               50: '#ecfdf5',
               100: '#d1fae5',
+              200: '#a7f3d0',
               500: '#10b981',
               600: '#059669',
               700: '#047857',
@@ -41,35 +45,32 @@
 <body class="bg-slate-50 text-slate-800 antialiased font-sans">
 
   <!-- NAVBAR -->
-  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <img src="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png" alt="Logo RQ Baitul Itqan" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full p-0.5 border border-brand-500 shadow-sm group-hover:scale-105 transition-transform">
+      <a href="#" class="flex items-center gap-3">
+        <img src="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png" alt="Logo RQ Baitul Itqan" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0.5 border border-brand-500 shadow-sm">
         <div>
           <span class="block text-sm sm:text-base font-extrabold text-brand-900 tracking-tight leading-tight">Rumah Qur'an</span>
-          <span class="block text-xs sm:text-sm font-semibold text-brand-600 tracking-wide">Baitul Itqan</span>
+          <span class="block text-xs font-semibold text-brand-600">Baitul Itqan</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-slate-600">
-        <a href="#tentang" class="hover:text-brand-600 transition-colors">Tentang Kami</a>
-        <a href="#program" class="hover:text-brand-600 transition-colors">Program</a>
-        <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Keunggulan</a>
-        <a href="#kontak" class="hover:text-brand-600 transition-colors">Kontak</a>
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-600">
+        <a href="#profil" class="hover:text-brand-600 transition-colors">Tentang & Sejarah</a>
+        <a href="#visimisi" class="hover:text-brand-600 transition-colors">Visi & Misi</a>
+        <a href="#metode" class="hover:text-brand-600 transition-colors">Metode Ummi</a>
+        <a href="#pengurus" class="hover:text-brand-600 transition-colors">Pengajar</a>
+        <a href="#kegiatan" class="hover:text-brand-600 transition-colors">Galeri</a>
+        <a href="#donasi" class="text-amber-600 hover:text-amber-700 transition-colors">Open Donasi</a>
       </nav>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-2.5">
-        <!-- Portal Admin Link (Subdomain Khusus) -->
-        <a href="https://adm.baitulitqan.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-brand-800 bg-brand-50 hover:bg-brand-100 border border-brand-200 px-3 py-2 rounded-lg transition-all flex items-center gap-1 shadow-sm">
-          <span>🔒</span>
-          <span class="hidden sm:inline">Portal</span> Admin
-        </a>
-        <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20tanya%20informasi%20pendaftaran%20santri%20baru" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 active:scale-95 px-3.5 py-2 rounded-lg transition-all shadow-sm">
-          Daftar Santri
+      <!-- Action Button -->
+      <div>
+        <a href="https://wa.me/6285156898583?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20tanya%20informasi%20pendaftaran" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 active:scale-95 px-4 py-2.5 rounded-xl shadow-sm transition-all inline-flex items-center gap-1.5">
+          <span>💬</span> Hubungi Kami
         </a>
       </div>
 
@@ -77,134 +78,247 @@
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-28 bg-gradient-to-b from-brand-50/60 via-slate-50 to-white">
+  <section class="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-gradient-to-b from-brand-50/80 via-white to-slate-50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 bg-brand-100/70 border border-brand-200 text-brand-800 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
-            <span>✨</span> Penerimaan Santri Baru Telah Dibuka
-          </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Mencetak Generasi Qur'ani yang <span class="text-brand-600 underline decoration-brand-200 decoration-wavy underline-offset-4">Tartil & Berakhlak Mulia</span>
-          </h1>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Rumah Qur'an Baitul Itqan berkomitmen membina santri membaca Al-Qur'an secara fasih dan benar melalui metode tartil terstandar, didampingi ustadzah bersyahadah serta sistem pelaporan digital berkala ke orang tua.
-          </p>
-          
-          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
-            <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20konsultasi%20pendaftaran" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center px-6 py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-600/20 transition-all">
-              Hubungi Admin via WhatsApp
-            </a>
-            <a href="#program" class="w-full sm:w-auto text-center px-6 py-3.5 bg-white hover:bg-slate-100 text-slate-700 font-bold text-sm rounded-xl border border-slate-200 shadow-sm transition-all">
-              Lihat Program Belajar
-            </a>
-          </div>
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <div class="inline-flex items-center gap-2 bg-brand-100 border border-brand-200 text-brand-800 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide shadow-sm">
+          <span>📍</span> Desa Cirahayu, Kec. Luragung, Kab. Kuningan, Jawa Barat
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Membina Generasi Qur'ani yang <span class="text-brand-600">Tartil, Disiplin & Berakhlak Mulia</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Pusat bimbingan baca Al-Qur'an anak dan program tahsin intensif Ummahat dengan standar <b>Metode Ummi bersyahadah resmi</b>.
+        </p>
 
-          <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-500 font-medium">
-            <span class="flex items-center gap-1.5">✓ Metode Standar Ummi</span>
-            <span class="flex items-center gap-1.5">✓ Pengajar Bersyahadah</span>
-            <span class="flex items-center gap-1.5">✓ Rapor Digital</span>
-          </div>
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+          <a href="#donasi" class="px-5 py-3 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2">
+            <span>🤝</span> Wakaf Pengadaan Ruang Kelas
+          </a>
+          <a href="#profil" class="px-5 py-3 bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs sm:text-sm rounded-xl border border-slate-200 shadow-sm transition-all">
+            Kenali Kami Lebih Dekat
+          </a>
+        </div>
+      </div>
+
+      <!-- COUNTER DINAMIS DARI DATABASE SUPABASE -->
+      <div class="mt-12 max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm text-center">
+          <span class="text-2xl sm:text-3xl font-extrabold text-brand-600 block" id="statSantri">
+            <span class="animate-pulse text-slate-300">...</span>
+          </span>
+          <span class="text-xs font-semibold text-slate-600 mt-1 block">Santri Anak Terdaftar</span>
+          <span class="text-[10px] text-slate-400 font-medium">Database Real-Time</span>
         </div>
 
-        <!-- Hero Card Visual -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-sm bg-white rounded-3xl p-6 shadow-xl border border-slate-100 relative">
-            <div class="absolute -top-3 -right-3 bg-brand-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
-              Keluarga Qur'an
-            </div>
-            <div class="text-center space-y-4">
-              <img src="https://res.cloudinary.com/dk8fg3wgm/image/upload/v1786163785/fav_ugojic.png" alt="Emblem" class="w-20 h-20 mx-auto rounded-full p-1 bg-brand-50 border-2 border-brand-500 shadow-md">
-              <div>
-                <h3 class="font-extrabold text-slate-800 text-lg">RQ Baitul Itqan</h3>
-                <p class="text-xs text-slate-500 mt-0.5">Membimbing dengan Hati, Mentartilkan Setiap Huruf</p>
-              </div>
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 text-xs text-left">
-                <div class="flex justify-between items-center py-1 border-b border-slate-200">
-                  <span class="text-slate-500">Target Belajar:</span>
-                  <span class="font-bold text-brand-700">Fasih Membaca & Hafal Juz 30</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-slate-200">
-                  <span class="text-slate-500">Evaluasi:</span>
-                  <span class="font-bold text-slate-700">Ujian Berkala & Rapor Online</span>
-                </div>
-                <div class="flex justify-between items-center py-1">
-                  <span class="text-slate-500">Suasana:</span>
-                  <span class="font-bold text-slate-700">Nyaman & Interaktif</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm text-center">
+          <span class="text-2xl sm:text-3xl font-extrabold text-brand-600 block" id="statKelas">
+            <span class="animate-pulse text-slate-300">...</span>
+          </span>
+          <span class="text-xs font-semibold text-slate-600 mt-1 block">Halaqah Kelas Aktif</span>
+          <span class="text-[10px] text-slate-400 font-medium">Berdasarkan Supabase</span>
         </div>
 
+        <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm text-center">
+          <span class="text-2xl sm:text-3xl font-extrabold text-brand-700 block">20+</span>
+          <span class="text-xs font-semibold text-slate-600 mt-1 block">Peserta Ummahat</span>
+          <span class="text-[10px] text-slate-400 font-medium">Halaqah Hari Minggu</span>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm text-center">
+          <span class="text-2xl sm:text-3xl font-extrabold text-amber-500 block">100%</span>
+          <span class="text-xs font-semibold text-slate-600 mt-1 block">Guru Bersyahadah</span>
+          <span class="text-[10px] text-slate-400 font-medium">Sertifikasi Ummi Resmi</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- TENTANG KAMI SECTION -->
-  <section id="tentang" class="py-16 bg-white border-t border-slate-100">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-4">
-      <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Mengenal Lembaga</span>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Visi & Dedikasi Kami</h2>
-      <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-        Rumah Qur'an Baitul Itqan didirikan dengan cita-cita mulia menghadirkan pusat pembelajaran Al-Qur'an yang ramah anak, terstruktur, dan akuntabel. Kami tidak hanya mengajarkan santri untuk mengeja dan menghafal ayat suci, namun juga menanamkan adab, nilai hadits, serta kecintaan terhadap kalamullah dalam kehidupan sehari-hari.
-      </p>
+  
+
+  <!-- SEJARAH & PERKEMBANGAN -->
+  <section id="profil" class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+      
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kilasan Perjalanan</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Sejarah & Perkembangan Lembaga</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed text-justify">
+          <p>
+            Perjalanan <b>Rumah Qur'an Baitul Itqan</b> bermula di <b>awal tahun 2026</b>. Kegiatan belajar Al-Qur'an pertama kali digagas oleh <b>Ustadzah Salamah</b> di rumah tempat tinggal beliau di Desa Cirahayu, Kecamatan Luragung, Kabupaten Kuningan. Gerakan awal ini disambut antusias oleh anak-anak usia sekolah dasar di lingkungan sekitar.
+          </p>
+          <p>
+            Melihat tingginya semangat anak-anak dan kebutuhan akan pengajaran yang profesional, sistematis, serta bersanad, Ustadzah Salamah berkomitmen menempuh jalur sertifikasi formal. Pada rentang <b>Mei hingga Juli 2026</b>, beliau mengikuti pembekalan intensif guru Al-Qur'an bersertifikat yang diselenggarakan oleh <b>Ummi Daerah Kuningan</b> dan berhasil lulus dengan hasil sempurna.
+          </p>
+          <p>
+            Pada <b>Juli 2026</b>, pendaftaran santri baru dibuka secara resmi dan disambut luar biasa: <b>60 santri baru</b> langsung bergabung dan dibagi ke dalam <b>7 kelas halaqah</b>. Pembelajaran berkembang dengan dibukanya kelas tahsin dewasa (Ummahat) setiap hari Minggu yang kini diikuti lebih dari 20 orang ibu-ibu.
+          </p>
+        </div>
+
+        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100 space-y-4">
+          <h3 class="font-extrabold text-slate-800 text-sm border-b pb-2">Milestone Capaian 2026</h3>
+          <div class="border-l-2 border-brand-500 pl-4 space-y-4 text-xs">
+            <div>
+              <span class="font-bold text-brand-700 block">Awal 2026 • Perintisan</span>
+              <p class="text-slate-500">Mulai mengajar Al-Qur'an untuk anak-anak SD Desa Cirahayu dari rumah tinggal.</p>
+            </div>
+            <div>
+              <span class="font-bold text-brand-700 block">Mei - Juli 2026 • Sertifikasi Ummi</span>
+              <p class="text-slate-500">Ustadzah Salamah menyelesaikan standarisasi metode Ummi Daerah Kuningan dengan predikat kelulusan sempurna.</p>
+            </div>
+            <div>
+              <span class="font-bold text-brand-700 block">Juli 2026 • PPDB Resmi Perdana</span>
+              <p class="text-slate-500">Penerimaan 60 santri baru dalam 7 kelas dan peresmian Kelas Tahsin Ummahat setiap hari Ahad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- PROGRAM SECTION -->
-  <section id="program" class="py-16 bg-slate-50 border-t border-slate-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+  <!-- VISI & MISI -->
+  <section id="visimisi" class="py-16 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
       
       <div class="text-center space-y-2">
-        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kurikulum & Jenjang</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Program Pembelajaran</h2>
-        <p class="text-xs sm:text-sm text-slate-500">Pilihan program terpadu sesuai jenjang kemampuan santri</p>
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Arah & Pedoman</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Visi & Misi Lembaga</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-7 rounded-2xl border border-brand-200/70 shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">🎯</div>
+          <h3 class="text-base font-bold text-slate-900">Visi Lembaga</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            "Menjadi pusat pembinaan generasi Qur'ani yang unggul dalam bacaan tartil, mutqin dalam hafalan, kokoh dalam adab, serta berakhlakul karimah di tengah masyarakat."
+          </p>
+        </div>
+
+        <div class="bg-white p-7 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold text-lg">🚀</div>
+          <h3 class="text-base font-bold text-slate-900">Misi Lembaga</h3>
+          <ul class="text-xs sm:text-sm text-slate-600 space-y-2 leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">1.</span>
+              <span>Menyelenggarakan pembelajaran Al-Qur'an secara tartil berstandar Metode Ummi yang mudah, menyenangkan, dan menyentuh hati.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">2.</span>
+              <span>Membimbing hafalan Juz 'Amma dan hadits-hadits pilihan penuntun adab sehari-hari santri.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">3.</span>
+              <span>Memfasilitasi pemberantasan buta huruf Al-Qur'an bagi kaum ibu/Ummahat di lingkungan desa Cirahayu dan sekitarnya.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-600 font-bold">4.</span>
+              <span>Menyajikan tata kelola pendidikan Al-Qur'an yang transparan, modern, dan akuntabel berbasis pelaporan digital.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PENJELASAN RESMI METODE UMMI -->
+  <section id="metode" class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
+      
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kurikulum & Pendekatan</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Mengenal Metode Ummi</h2>
+        <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto">
+          Diadaptasi dari filosofi resmi <a href="https://ummifoundation.org/metode" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline font-semibold">Ummi Foundation</a>: Bukan sekadar metode, melainkan sistem mutu pembelajaran Al-Qur'an dengan <i>Pendekatan Bahasa Ibu</i>.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <span class="text-2xl">🗣️</span>
+          <h4 class="text-sm font-bold text-slate-800">1. Direct Method (Langsung)</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Santri membaca langsung tanpa dieja atau diurai rumus rumit. Konsep <i>learning by doing</i> membuat santri langsung lancar melafalkan huruf dan harakat.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <span class="text-2xl">🔁</span>
+          <h4 class="text-sm font-bold text-slate-800">2. Repetition (Diulang-ulang)</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Sebagaimana seorang ibu membiasakan kata pada balitanya, keindahan dan kekuatan bacaan santri terbentuk melalui pengulangan ritmis yang menyenangkan.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+          <span class="text-2xl">💖</span>
+          <h4 class="text-sm font-bold text-slate-800">3. Affection (Kasih Sayang Tulus)</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Kunci keberhasilan guru Al-Qur'an adalah meneladani keikhlasan seorang ibu, mendidik dengan sentuhan hati sehingga santri mencintai Al-Qur'an tanpa rasa takut.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-brand-50/70 p-5 rounded-2xl border border-brand-200 text-xs text-brand-900 flex items-center gap-3">
+        <span class="text-xl">🌟</span>
+        <span><b>3 Pilar Kekuatan Mutu Ummi:</b> RQ Baitul Itqan memadukan <b>Metode yang Baik</b>, <b>Guru yang Bermutu (Bersyahadah)</b>, dan <b>Sistem yang Kokoh</b> dalam setiap halaqah.</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PENGURUS & PENGAJAR (TERBARU) -->
+  <section id="pengurus" class="py-16 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
+      
+      <div class="text-center space-y-2">
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Dedikasi Lembaga</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Susunan Pengurus & Asatidz</h2>
+        <p class="text-xs sm:text-sm text-slate-500">Pimpinan lembaga dan asatidz bersertifikasi resmi yang membimbing santri</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Program 1 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
-          <div class="space-y-3">
-            <span class="text-2xl">📖</span>
-            <h3 class="text-base font-bold text-slate-800">Kelas Tahsin Ummi (Jilid 1 - 6)</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Bimbingan membaca Al-Qur'an secara bertahap mulai dari pengenalan huruf hijaiyah, makharijul huruf, tajwid dasar, hingga bacaan tartil berstandar jilid Ummi.
+        <!-- Ketua Lembaga -->
+        <div class="bg-white rounded-2xl p-6 border border-brand-300 shadow-sm text-center space-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">Ketua Lembaga</div>
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Dani Ardani, S.Kom., M.Pd" class="w-20 h-20 mx-auto rounded-full bg-brand-50 p-1 border-2 border-brand-500">
+          <div>
+            <h3 class="font-extrabold text-slate-800 text-sm">Dani Ardani, S.Kom., M.Pd.</h3>
+            <p class="text-xs text-brand-700 font-semibold">Ketua Lembaga</p>
+            <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">
+              Memimpin manajemen operasional kelembagaan, digitalisasi sistem pendidikan, dan pengembangan mutu Rumah Qur'an Baitul Itqan.
             </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-700">
-            Usia Santri: 4 - 12 Tahun
           </div>
         </div>
 
-        <!-- Program 2 -->
-        <div class="bg-white rounded-2xl p-6 border border-brand-200 bg-brand-50/20 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-brand-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl-lg">Unggulan</div>
-          <div class="space-y-3">
-            <span class="text-2xl">🕌</span>
-            <h3 class="text-base font-bold text-slate-800">Tahfidz Anak & Hadits Pilihan</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Program akselerasi hafalan Juz 30 (Juz 'Amma) dipadukan dengan mutaba'ah setoran harian, hafalan hadits pilihan, serta doa-doa harian penunjang ibadah.
+        <!-- Ustadzah Salamah -->
+        <div class="bg-white rounded-2xl p-6 border border-emerald-200 shadow-sm text-center space-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-emerald-700 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">Asatidz Bersertifikasi</div>
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Salamah, S.Kom.I." class="w-20 h-20 mx-auto rounded-full bg-brand-50 p-1 border-2 border-brand-500">
+          <div>
+            <h3 class="font-extrabold text-slate-800 text-sm">Salamah, S.Kom.I.</h3>
+            <p class="text-xs text-brand-700 font-semibold">Koordinator Kurikulum & Pengajar</p>
+            <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">
+              Guru Al-Qur'an bersyahadah resmi Metode Ummi Daerah Kuningan (Lulus Sempurna). Pembina halaqah anak dan kelas tahsin Ummahat.
             </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-700">
-            Dilengkapi Rapor Ujian Digital
           </div>
         </div>
 
-        <!-- Program 3 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
-          <div class="space-y-3">
-            <span class="text-2xl">🧕</span>
-            <h3 class="text-base font-bold text-slate-800">Tahsin Dewasa / Ummahat</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Kelas bimbingan perbaikan bacaan Al-Qur'an khusus kaum ibu dan muslimah dewasa dengan jadwal yang fleksibel dan suasana halaqah yang nyaman.
+        <!-- Ustadzah Rosianah -->
+        <div class="bg-white rounded-2xl p-6 border border-emerald-200 shadow-sm text-center space-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-emerald-700 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">Asatidz Bersertifikasi</div>
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Rosianah" class="w-20 h-20 mx-auto rounded-full bg-brand-50 p-1 border-2 border-brand-500">
+          <div>
+            <h3 class="font-extrabold text-slate-800 text-sm">Rosianah</h3>
+            <p class="text-xs text-brand-700 font-semibold">Pengajar & Penguji Halaqah</p>
+            <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">
+              Guru Al-Qur'an bersertifikasi resmi yang membimbing kelancaran makharijul huruf, evaluasi jilid, serta hafalan santri.
             </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-brand-700">
-            Kelas Intensif Mingguan
           </div>
         </div>
 
@@ -213,51 +327,167 @@
     </div>
   </section>
 
-  <!-- KEUNGGULAN SECTION -->
-  <section id="keunggulan" class="py-16 bg-white border-t border-slate-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-10">
+  <!-- GALERI DOKUMENTASI (6 FOTO LANDSCAPE & 3 VIDEO YOUTUBE) -->
+  <section id="kegiatan" class="py-16 bg-white border-t border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
       
       <div class="text-center space-y-2">
-        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kenapa Memilih Kami</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Keunggulan RQ Baitul Itqan</h2>
+        <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Dokumentasi</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Galeri Suasana Halaqah</h2>
+        <p class="text-xs sm:text-sm text-slate-500">Momen proses pembelajaran santri dan ummahat Rumah Qur'an Baitul Itqan</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">🎓</div>
-          <h4 class="text-sm font-bold text-slate-800">Guru Bersyahadah</h4>
-          <p class="text-xs text-slate-500">Seluruh pengajar telah mengantongi syahadah pelatihan metode Qur'ani.</p>
+      <!-- BAGIAN 1: 6 FOTO LANDSCAPE (Rasio 4:3 / 16:10) -->
+      <div class="space-y-4">
+        <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+          <span>📷</span> Foto Kegiatan Belajar
+        </h3>
+        
+        <!-- Grid 2 kolom di HP, 3 kolom di Layar Sedang & Laptop -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          
+          <!-- Foto 1 -->
+          <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] border border-slate-200 shadow-sm hover:shadow-md transition-all">
+            <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80" alt="Bimbingan Jilid Metode Ummi" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex items-end p-4">
+              <span class="text-xs text-white font-semibold tracking-wide drop-shadow-sm">Bimbingan Jilid Metode Ummi</span>
+            </div>
+          </div>
+
+          <!-- Foto 2 -->
+          <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] border border-slate-200 shadow-sm hover:shadow-md transition-all">
+            <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=800&q=80" alt="Setoran Hafalan Juz Amma" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex items-end p-4">
+              <span class="text-xs text-white font-semibold tracking-wide drop-shadow-sm">Setoran Hafalan Juz 'Amma</span>
+            </div>
+          </div>
+
+          <!-- Foto 3 -->
+          <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] border border-slate-200 shadow-sm hover:shadow-md transition-all">
+            <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=800&q=80" alt="Halaqah Santri Anak" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex items-end p-4">
+              <span class="text-xs text-white font-semibold tracking-wide drop-shadow-sm">Halaqah Santri Anak</span>
+            </div>
+          </div>
+
+          <!-- Foto 4 -->
+          <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] border border-slate-200 shadow-sm hover:shadow-md transition-all">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Ujian Kenaikan Jilid" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex items-end p-4">
+              <span class="text-xs text-white font-semibold tracking-wide drop-shadow-sm">Ujian Kenaikan Jilid Berkala</span>
+            </div>
+          </div>
+
+          <!-- Foto 5 -->
+          <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] border border-slate-200 shadow-sm hover:shadow-md transition-all">
+            <img src="https://i.ibb.co.com/60xL9dd3/ummahat1.jpg" alt="Kelas Tahsin Ummahat" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex items-end p-4">
+              <span class="text-xs text-white font-semibold tracking-wide drop-shadow-sm">Kelas Tahsin Ummahat Tiap Ahad</span>
+            </div>
+          </div>
+
+          <!-- Foto 6 -->
+          <div class="group relative rounded-2xl overflow-hidden bg-slate-100 aspect-[4/3] border border-slate-200 shadow-sm hover:shadow-md transition-all">
+            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" alt="Pembiasaan Doa dan Hadits" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex items-end p-4">
+              <span class="text-xs text-white font-semibold tracking-wide drop-shadow-sm">Pembiasaan Adab & Doa Harian</span>
+            </div>
+          </div>
+
         </div>
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">📲</div>
-          <h4 class="text-sm font-bold text-slate-800">Monitoring Digital</h4>
-          <p class="text-xs text-slate-500">Mutaba'ah hafalan dan hasil ujian dapat diakses online oleh orang tua.</p>
-        </div>
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">🤝</div>
-          <h4 class="text-sm font-bold text-slate-800">Rasio Kelas Ideal</h4>
-          <p class="text-xs text-slate-500">Jumlah santri per halaqah dibatasi agar bimbingan berjalan intensif dan fokus.</p>
-        </div>
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-          <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center font-bold mx-auto sm:mx-0">🌱</div>
-          <h4 class="text-sm font-bold text-slate-800">Pendidikan Adab</h4>
-          <p class="text-xs text-slate-500">Mengedepankan akhlakul karimah terhadap Al-Qur'an, guru, dan orang tua.</p>
+      </div>
+
+      <!-- BAGIAN 2: 3 VIDEO YOUTUBE (Rasio Standar 16:9) -->
+      <div class="space-y-4 pt-6 border-t border-slate-100">
+        <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider flex items-center gap-2">
+          <span>🎬</span> Video Dokumentasi Kegiatan
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Video 1 -->
+          <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+            <div class="aspect-video w-full">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Kegiatan 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5">
+              <h4 class="font-bold text-slate-800 text-xs line-clamp-1">Suasana Halaqah Belajar Metode Ummi</h4>
+              <p class="text-[10px] text-slate-500 mt-0.5">Dokumentasi belajar santri anak</p>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+            <div class="aspect-video w-full">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Kegiatan 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5">
+              <h4 class="font-bold text-slate-800 text-xs line-clamp-1">Pelaksanaan Ujian Kenaikan Jilid</h4>
+              <p class="text-[10px] text-slate-500 mt-0.5">Evaluasi munaqasyah hafalan & tartil</p>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+            <div class="aspect-video w-full">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Kegiatan 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="p-3.5">
+              <h4 class="font-bold text-slate-800 text-xs line-clamp-1">Bimbingan Tahsin Dewasa (Ummahat)</h4>
+              <p class="text-[10px] text-slate-500 mt-0.5">Kajian tahsin mingguan hari Ahad</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- CTA / KONTAK SECTION -->
-  <section id="kontak" class="py-16 bg-brand-900 text-white relative overflow-hidden">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
-      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Daftarkan Putra-Putri Anda Sekarang</h2>
-      <p class="text-xs sm:text-sm text-brand-200 max-w-xl mx-auto leading-relaxed">
-        Beri bekal terindah bagi masa depan ananda dengan bimbingan Al-Qur'an yang menyenangkan dan berkualitas di Rumah Qur'an Baitul Itqan.
+<!-- CARD OPEN DONASI PENGADAAN RUANG KELAS -->
+  <section id="donasi" class="py-12 bg-amber-50/60 border-y border-amber-200/70">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div class="absolute -right-8 -bottom-8 w-44 h-44 bg-amber-100/50 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="space-y-3 text-center md:text-left max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span>📢</span> Program Wakaf & Pembangunan
+          </div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">
+            Gotong Royong Pengadaan Ruang Belajar Baru RQ Baitul Itqan
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Kegiatan belajar mengajar saat ini masih menempati rumah tinggal pendiri yang semakin padat seiring bertambahnya santri. Lembaga berikhtiar membebaskan sebidang tanah & bangunan tepat di depan rumah mengajar untuk dialihfungsikan menjadi ruang kelas santri yang layak dan nyaman.
+          </p>
+        </div>
+
+        <div class="shrink-0 w-full md:w-auto text-center">
+          <a href="donasi.html" class="block w-full md:w-auto px-6 py-3.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-amber-500/25 transition-all">
+            Lihat Rincian Wakaf & Donasi &rarr;
+          </a>
+          <span class="text-[11px] text-slate-500 mt-2 block font-medium">Salurkan amal jariyah terbaik Anda</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOKASI & KONTAK -->
+  <section class="py-16 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <span class="text-xs font-bold text-brand-600 tracking-widest uppercase">Kunjungi Kami</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Alamat & Narahubung</h2>
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-xl mx-auto">
+        <b>Rumah Qur'an Baitul Itqan</b><br>
+        Desa Cirahayu, Kecamatan Luragung, Kabupaten Kuningan, Jawa Barat 45581.
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-        <a href="https://wa.me/6281234567890?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan,%20saya%20ingin%20mendaftarkan%20anak%20saya" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 bg-brand-500 hover:bg-brand-400 active:scale-95 text-white font-bold text-sm rounded-xl shadow-lg transition-all">
-          Hubungi via WhatsApp (Customer Service)
+
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+        <a href="https://wa.me/6285156898583?text=Assalamu%27alaikum%20Admin%20RQ%20Baitul%20Itqan" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all">
+          Hubungi Admin via WhatsApp
+        </a>
+        <a href="donasi.html" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm rounded-xl shadow-md transition-all">
+          Informasi Donasi Ruang Kelas
         </a>
       </div>
     </div>
@@ -271,13 +501,50 @@
         <span class="text-slate-200 font-bold">Rumah Qur'an Baitul Itqan</span>
       </div>
       <div>
-        &copy; 2026 Rumah Qur'an Baitul Itqan. All rights reserved.
+        &copy; 2026 Rumah Qur'an Baitul Itqan. Cirahayu - Luragung - Kuningan.
       </div>
-      <div>
-        <a href="https://adm.baitulitqan.com" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors">Portal Pengurus &rsaquo;</a>
+      <div class="text-[11px] text-slate-500">
+        Membina Generasi Qur'ani Tartil & Berakhlak
       </div>
     </div>
   </footer>
+
+  <!-- SCRIPT KONEKSI SUPABASE: STATISTIK DINAMIS REAL-TIME -->
+  <script>
+    const SUPABASE_URL = "https://dzgshmfgklbtpgglcbnh.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6Z3NobWZna2xidHBnZ2xjYm5oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxNDUwMTQsImV4cCI6MjEwMTcyMTAxNH0.BBqqL82VDj7G-unamkgGTNoiR3Eg_xGntDM4EofWhyA";
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function loadStatistikSupabase() {
+      try {
+        const { data, count, error } = await db
+          .from('santri')
+          .select('kelas', { count: 'exact' });
+
+        if (error) throw error;
+
+        // 1. Tampilkan Jumlah Santri Real-Time
+        const totalSantri = count !== null ? count : (data ? data.length : 60);
+        document.getElementById('statSantri').innerText = totalSantri;
+
+        // 2. Hitung Jumlah Kelas Unik Real-Time
+        if (data && data.length > 0) {
+          const listKelas = [...new Set(data.map(item => item.kelas))].filter(Boolean);
+          const totalKelas = listKelas.length > 0 ? listKelas.length : 7;
+          document.getElementById('statKelas').innerText = totalKelas;
+        } else {
+          document.getElementById('statKelas').innerText = "7";
+        }
+
+      } catch (err) {
+        console.error("Gagal mengambil statistik dari Supabase:", err);
+        document.getElementById('statSantri').innerText = "60+";
+        document.getElementById('statKelas').innerText = "7";
+      }
+    }
+
+    loadStatistikSupabase();
+  </script>
 
 </body>
 </html>
