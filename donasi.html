@@ -172,49 +172,68 @@
       </div>
 
       <!-- TABEL ESTIMASI 2 KEBUTUHAN UTAMA -->
-      <div class="pt-4 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
-          <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Rencana Anggaran Biaya (RAB) 2 Kebutuhan Utama:</h3>
-          <span class="text-[11px] bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-full">Total Target: Rp 500.000.000</span>
-        </div>
+<div class="pt-4 space-y-4">
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+    <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Rencana Anggaran Biaya (RAB) 2 Kebutuhan Utama:</h3>
+    <span class="text-[11px] bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-full">Total Target: Rp 500.000.000</span>
+  </div>
 
-        <div class="overflow-x-auto border border-slate-200 rounded-xl">
-          <table class="w-full text-xs text-left">
-            <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-              <tr>
-                <th class="p-3">Uraian Program Utama</th>
-                <th class="p-3">Volume / Spesifikasi</th>
-                <th class="p-3">Estimasi Biaya</th>
-                <th class="p-3">Status</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100 text-slate-600">
-              <tr>
-                <td class="p-3 font-semibold text-slate-800">
-                  1. Pembebasan Tanah & Bangunan Rumah Lapuk
-                  <span class="block text-[11px] text-slate-500 font-normal">Pembebasan lahan kavling tepat di depan tempat mengajar saat ini</span>
-                </td>
-                <td class="p-3">Kavling ± 120 m²</td>
-                <td class="p-3 font-bold text-amber-700">Rp 150.000.000</td>
-                <td class="p-3"><span class="bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded text-[10px] font-bold">Fase 1</span></td>
-              </tr>
-              <tr>
-                <td class="p-3 font-semibold text-slate-800">
-                  2. Pembongkaran Rumah Lapuk & Pembangunan Gedung Baru
-                  <span class="block text-[11px] text-slate-500 font-normal">Bongkar rumah tua, pembuangan puing, perataan pondasi, serta konstruksi fisik gedung baru permanen</span>
-                </td>
-                <td class="p-3">Luas Bangunan ± 100 m²</td>
-                <td class="p-3 font-bold text-amber-700">Rp 350.000.000</td>
-                <td class="p-3"><span class="bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded text-[10px] font-bold">Fase 2</span></td>
-              </tr>
-              <tr class="bg-brand-50/80 font-bold text-brand-900">
-                <td colspan="2" class="p-3 text-right text-xs uppercase tracking-wider">TOTAL ANGGARAN DIBUTUHKAN:</td>
-                <td colspan="2" class="p-3 text-base text-brand-700 font-extrabold">Rp 500.000.000</td>
-              </tr>
-            </tbody>
-          </table>
+  <!-- Grid Card (1 Kolom di HP, 2 Kolom di Tablet/Desktop) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    
+    <!-- Card 1: Pembebasan Lahan -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3 flex flex-col justify-between relative overflow-hidden">
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-full text-[10px] font-bold">Fase 1</span>
+          <span class="text-[11px] text-slate-500 font-medium">± 120 m²</span>
         </div>
+        <h4 class="font-bold text-slate-800 text-sm leading-snug">
+          1. Pembebasan Tanah & Bangunan Rumah Lapuk
+        </h4>
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Pembebasan lahan kavling strategis tepat di depan tempat mengajar saat ini.
+        </p>
       </div>
+
+      <div class="pt-3 border-t border-slate-100 flex justify-between items-baseline">
+        <span class="text-[10px] text-slate-400 uppercase font-semibold">Estimasi Biaya</span>
+        <span class="text-base sm:text-lg font-black text-amber-700">Rp 150.000.000</span>
+      </div>
+    </div>
+
+    <!-- Card 2: Pembongkaran & Konstruksi -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3 flex flex-col justify-between relative overflow-hidden">
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full text-[10px] font-bold">Fase 2</span>
+          <span class="text-[11px] text-slate-500 font-medium">Bangunan ± 100 m²</span>
+        </div>
+        <h4 class="font-bold text-slate-800 text-sm leading-snug">
+          2. Pembongkaran Rumah Lapuk & Pembangunan Gedung Baru
+        </h4>
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Bongkar rumah tua, pembuangan puing, perataan pondasi, serta konstruksi fisik gedung baru permanen.
+        </p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex justify-between items-baseline">
+        <span class="text-[10px] text-slate-400 uppercase font-semibold">Estimasi Biaya</span>
+        <span class="text-base sm:text-lg font-black text-amber-700">Rp 350.000.000</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Card Total Anggaran -->
+  <div class="bg-brand-50 border border-brand-200 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+    <div>
+      <span class="text-[10px] uppercase font-bold text-brand-800 tracking-wider block">Total Anggaran Dibutuhkan</span>
+      <span class="text-xs text-slate-500">Target terpadu pembebasan lahan & pembangunan fisik</span>
+    </div>
+    <span class="text-xl sm:text-2xl font-black text-brand-700">Rp 500.000.000</span>
+  </div>
+</div>
 
       <!-- PAKET WAKAF PARTISIPATIF RINGKAS -->
       <div class="pt-2 space-y-3">
